@@ -4,44 +4,52 @@ import { useState } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { NavLink } from '@/components/ui/NavLink'
-import { ArrowPathIcon, CloudArrowUpIcon, FingerPrintIcon, LockClosedIcon } from '@heroicons/react/24/outline'
 import CursorImage from '@/assets/images/cursor.png'
 import MessageImage from '@/assets/images/message.png'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import { CheckIcon } from '@heroicons/react/20/solid'
 
 const navigation = [
     { name: 'Features', href: '#' },
-    { name: 'Pricing', href: '#' },
+    { name: 'Pricing', href: '#pricing' },
     { name: 'About', href: '#' },
 ]
 
-const features = [
+const tiers = [
     {
-        name: 'Push to deploy',
-        description:
-            'Morbi viverra dui mi arcu sed. Tellus semper adipiscing suspendisse semper morbi. Odio urna massa nunc massa.',
-        icon: CloudArrowUpIcon,
+        name: 'Free Plan',
+        id: 'tier-hobby',
+        href: '#',
+        priceMonthly: '$0',
+        description: "The perfect plan if you're just getting started with our product.",
+        features: [
+            'Boost engagement with target responses',
+            'Automate comment replies to enhance audience interaction',
+            'Turn followers into customers with targeted messaging'
+        ],
+        featured: false,
     },
     {
-        name: 'SSL certificates',
-        description:
-            'Sit quis amet rutrum tellus ullamcorper ultricies libero dolor eget. Sem sodales gravida quam turpis enim lacus amet.',
-        icon: LockClosedIcon,
-    },
-    {
-        name: 'Simple queues',
-        description:
-            'Quisque est vel vulputate cursus. Risus proin diam nunc commodo. Lobortis auctor congue commodo diam neque.',
-        icon: ArrowPathIcon,
-    },
-    {
-        name: 'Advanced security',
-        description:
-            'Arcu egestas dolor vel iaculis in ipsum mauris. Tincidunt mattis aliquet hac quis. Id hac maecenas ac donec pharetra eget.',
-        icon: FingerPrintIcon,
+        name: 'Smart AI Plan',
+        id: 'tier-enterprise',
+        href: '#',
+        priceMonthly: '$15',
+        description: 'Advanced features for power users',
+        features: [
+            'All features from the Free Plan',
+            'AI-powered response generation',
+            'Advanced analytics and insights',
+            'Priority customer support',
+            'Custom branding options'
+        ],
+        featured: true,
     },
 ]
+
+function classNames(...classes: string[]) {
+    return classes.filter(Boolean).join(' ')
+}
 
 const Home = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -78,7 +86,7 @@ const Home = () => {
                         ))}
                     </div>
                     <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                        <NavLink href="#" className="text-sm/6 font-semibold text-gray-300">
+                        <NavLink href="/dashboard" className="text-sm/6 font-semibold text-gray-300">
                             Log in <span aria-hidden="true">&rarr;</span>
                         </NavLink>
                     </div>
@@ -170,7 +178,8 @@ const Home = () => {
                                 drag
                                 dragSnapToOrigin
                             >
-                                <Image src={CursorImage} height={200} width={200} alt="cursor image" className="max-w-none" draggable={false}/>
+                                <Image src={CursorImage} height={200} width={200} alt="cursor image"
+                                       className="max-w-none" draggable={false}/>
                             </motion.div>
 
                             <motion.div
@@ -178,7 +187,8 @@ const Home = () => {
                                 drag
                                 dragSnapToOrigin
                             >
-                                <Image src={MessageImage} height={200} width={200} alt="message image" className="max-w-none" draggable={false}/>
+                                <Image src={MessageImage} height={200} width={200} alt="message image"
+                                       className="max-w-none" draggable={false}/>
                             </motion.div>
 
                         </div>
@@ -215,56 +225,104 @@ const Home = () => {
                     />
                 </div>
             </div>
-            <div
-                className="relative bg-gradient-to-br from-purple-800 via-purple-900 to-black py-24 sm:py-32 text-white overflow-hidden">
-                {/* Star Dust Effect */}
-                <div className="absolute inset-0 pointer-events-none">
-                    <div className="animate-star-dust w-full h-full">
-                        {Array.from({length: 100}).map((_, index) => (
-                            <div
-                                key={index}
-                                className="absolute w-1 h-1 bg-purple-500 rounded-full opacity-75"
-                                style={{
-                                    top: `${Math.random() * 100}%`,
-                                    left: `${Math.random() * 100}%`,
-                                    animationDelay: `${Math.random() * 5}s`,
-                                    animationDuration: `${Math.random() * 3 + 2}s`,
-                                }}
-                            ></div>
-                        ))}
-                    </div>
+            <div className="relative isolate bg-gray-900 text-white px-6 py-24 sm:py-32 lg:px-8">
+                <div
+                    aria-hidden="true"
+                    className="absolute inset-x-0 -top-3 -z-10 transform-gpu overflow-hidden px-36 blur-3xl transition-all duration-1000"
+                >
+                    <div
+                        style={{
+                            clipPath:
+                                'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
+                        }}
+                        className="mx-auto aspect-[1155/678] w-[72.1875rem] bg-gradient-to-tr from-[#6a0dad] to-[#8b00b7] opacity-30"
+                    />
                 </div>
-
-                <div className="mx-auto max-w-7xl px-6 lg:px-8 relative">
-                    <div className="mx-auto max-w-2xl lg:text-center">
-                        <h2 className="text-base font-semibold text-purple-400">Deploy faster</h2>
-                        <p className="mt-2 text-4xl font-semibold tracking-tight sm:text-5xl lg:text-balance">
-                            Everything you need to deploy your app
-                        </p>
-                        <p className="mt-6 text-lg">
-                            Quis tellus eget adipiscing convallis sit sit eget aliquet quis. Suspendisse eget egestas a
-                            elementum
-                            pulvinar et feugiat blandit at. In mi viverra elit nunc.
-                        </p>
-                    </div>
-                    <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
-                        <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
-                            {features.map((feature) => (
-                                <div key={feature.name} className="relative pl-16">
-                                    <dt className="text-base font-semibold">
-                                        <div
-                                            className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-purple-600">
-                                            <feature.icon aria-hidden="true" className="h-6 w-6 text-white"/>
-                                        </div>
-                                        {feature.name}
-                                    </dt>
-                                    <dd className="mt-2 text-base text-purple-300">{feature.description}</dd>
-                                </div>
-                            ))}
-                        </dl>
-                    </div>
+                <div className="mx-auto max-w-4xl text-center">
+                    <h2 className="text-base/7 font-semibold text-purple-400" id="pricing">Pricing</h2>
+                    <p className="mt-2 text-balance text-5xl font-semibold tracking-tight text-gray-100 sm:text-6xl">
+                        Choose the right plan for you
+                    </p>
+                </div>
+                <p className="mx-auto mt-6 max-w-2xl text-pretty text-center text-lg font-medium text-gray-400 sm:text-xl/8">
+                    Choose an affordable plan that’s packed with the best features for engaging your audience, creating
+                    customer loyalty, and driving sales.
+                </p>
+                <div
+                    className="mx-auto mt-16 grid max-w-lg grid-cols-1 items-center gap-y-6 sm:mt-20 sm:gap-y-0 lg:max-w-4xl lg:grid-cols-2">
+                    {tiers.map((tier, tierIdx) => (
+                        <div
+                            key={tier.id}
+                            className={classNames(
+                                tier.featured
+                                    ? 'relative shadow-2xl transition-all duration-1000'
+                                    : 'sm:mx-8 lg:mx-0',
+                                tier.featured
+                                    ? ''
+                                    : tierIdx === 0
+                                        ? 'rounded-t-3xl sm:rounded-b-none lg:rounded-bl-3xl lg:rounded-tr-none'
+                                        : 'sm:rounded-t-none lg:rounded-bl-none lg:rounded-tr-3xl',
+                                'rounded-3xl p-8 ring-1 ring-gray-700/10 sm:p-10 transition-all duration-1000'
+                            )}
+                        >
+                            <h3
+                                id={tier.id}
+                                className={classNames(tier.featured ? 'text-white' : 'text-white', 'text-base/7 font-semibold')}
+                            >
+                                {tier.name}
+                            </h3>
+                            <p className="mt-4 flex items-baseline gap-x-2">
+          <span
+              className={classNames(
+                  tier.featured ? 'text-white' : 'text-gray-100',
+                  'text-5xl font-semibold tracking-tight'
+              )}
+          >
+            {tier.priceMonthly}
+          </span>
+                                <span
+                                    className={classNames(tier.featured ? 'text-gray-400' : 'text-gray-500', 'text-base')}
+                                >
+            /month
+          </span>
+                            </p>
+                            <p className={classNames(tier.featured ? 'text-gray-300' : 'text-gray-500', 'mt-6 text-base/7')}>
+                                {tier.description}
+                            </p>
+                            <ul
+                                role="list"
+                                className={classNames(
+                                    tier.featured ? 'text-gray-300' : 'text-gray-400',
+                                    'mt-8 space-y-3 text-sm/6 sm:mt-10'
+                                )}
+                            >
+                                {tier.features.map((feature) => (
+                                    <li key={feature} className="flex gap-x-3">
+                                        <CheckIcon
+                                            aria-hidden="true"
+                                            className={classNames(tier.featured ? 'text-purple-400' : 'text-purple-600', 'h-6 w-5 flex-none')}
+                                        />
+                                        {feature}
+                                    </li>
+                                ))}
+                            </ul>
+                            <a
+                                href={tier.href}
+                                aria-describedby={tier.id}
+                                className={classNames(
+                                    tier.featured
+                                        ? 'bg-purple-500 text-white shadow-sm hover:bg-purple-400 focus-visible:outline-purple-500'
+                                        : 'text-purple-600 ring-1 ring-inset ring-indigo-200 hover:ring-indigo-300 focus-visible:outline-purple-600',
+                                    'mt-8 block rounded-md px-3.5 py-2.5 text-center text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 sm:mt-10'
+                                )}
+                            >
+                                Get started today
+                            </a>
+                        </div>
+                    ))}
                 </div>
             </div>
+
         </div>
     )
 }
