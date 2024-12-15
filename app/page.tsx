@@ -1,14 +1,46 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
+import { useState } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { NavLink } from '@/components/ui/NavLink'
+import { ArrowPathIcon, CloudArrowUpIcon, FingerPrintIcon, LockClosedIcon } from '@heroicons/react/24/outline'
+import CursorImage from '@/assets/images/cursor.png'
+import MessageImage from '@/assets/images/message.png'
+import Image from 'next/image'
+import { motion } from 'framer-motion'
 
 const navigation = [
     { name: 'Features', href: '#' },
     { name: 'Pricing', href: '#' },
     { name: 'About', href: '#' },
+]
+
+const features = [
+    {
+        name: 'Push to deploy',
+        description:
+            'Morbi viverra dui mi arcu sed. Tellus semper adipiscing suspendisse semper morbi. Odio urna massa nunc massa.',
+        icon: CloudArrowUpIcon,
+    },
+    {
+        name: 'SSL certificates',
+        description:
+            'Sit quis amet rutrum tellus ullamcorper ultricies libero dolor eget. Sem sodales gravida quam turpis enim lacus amet.',
+        icon: LockClosedIcon,
+    },
+    {
+        name: 'Simple queues',
+        description:
+            'Quisque est vel vulputate cursus. Risus proin diam nunc commodo. Lobortis auctor congue commodo diam neque.',
+        icon: ArrowPathIcon,
+    },
+    {
+        name: 'Advanced security',
+        description:
+            'Arcu egestas dolor vel iaculis in ipsum mauris. Tincidunt mattis aliquet hac quis. Id hac maecenas ac donec pharetra eget.',
+        icon: FingerPrintIcon,
+    },
 ]
 
 const Home = () => {
@@ -17,7 +49,7 @@ const Home = () => {
     return (
         <div className="bg-gray-900 text-white">
             <header className="absolute inset-x-0 top-0 z-50">
-                <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
+                <nav aria-label="Global" className="flex items-center sticky justify-between p-6 lg:px-8">
                     <div className="flex lg:flex-1">
                         <a href="#" className="-m-1.5 p-1.5">
                             <span className="sr-only">Your Company</span>
@@ -35,7 +67,7 @@ const Home = () => {
                             className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-300"
                         >
                             <span className="sr-only">Open main menu</span>
-                            <Bars3Icon aria-hidden="true" className="size-6" />
+                            <Bars3Icon aria-hidden="true" className="size-6"/>
                         </button>
                     </div>
                     <div className="hidden lg:flex lg:gap-x-12">
@@ -52,8 +84,9 @@ const Home = () => {
                     </div>
                 </nav>
                 <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
-                    <div className="fixed inset-0 z-50" />
-                    <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-gray-800 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-700/10">
+                    <div className="fixed inset-0 z-50"/>
+                    <DialogPanel
+                        className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-gray-800 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-700/10">
                         <div className="flex items-center justify-between">
                             <a href="#" className="-m-1.5 p-1.5">
                                 <span className="sr-only">Your Company</span>
@@ -69,7 +102,7 @@ const Home = () => {
                                 className="-m-2.5 rounded-md p-2.5 text-gray-300"
                             >
                                 <span className="sr-only">Close menu</span>
-                                <XMarkIcon aria-hidden="true" className="size-6" />
+                                <XMarkIcon aria-hidden="true" className="size-6"/>
                             </button>
                         </div>
                         <div className="mt-6 flow-root">
@@ -122,15 +155,35 @@ const Home = () => {
                             </NavLink>
                         </div>
                         <span className="relative flex h-3 w-3">
-                          <span className="animate-ping absolute inline-flex h-full right-2 w-full rounded-full bg-purple-500 opacity-75"></span>
+                          <span
+                              className="animate-ping absolute inline-flex h-full right-2 w-full rounded-full bg-purple-500 opacity-75"></span>
                           <span className="relative inline-flex rounded-full right-2 h-3 w-3 bg-purple-600 "></span>
                         </span>
                     </div>
                     <div className="text-center">
-                        <h1 className="text-balance text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-                            Automate. Personalize. Thrive
-                        </h1>
-                        <p className="mt-8 text-pretty text-lg font-medium text-gray-300 sm:text-xl/8">
+                        <div className="inline-flex relative">
+                            <h1 className="text-balance text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+                                Automate. Personalize. Thrive
+                            </h1>
+                            <motion.div
+                                className="absolute right-[565px] top-[150px] hidden sm:inline"
+                                drag
+                                dragSnapToOrigin
+                            >
+                                <Image src={CursorImage} height={200} width={200} alt="cursor image" className="max-w-none" draggable={false}/>
+                            </motion.div>
+
+                            <motion.div
+                                className="absolute left-[565px] bottom-[90px] hidden sm:inline"
+                                drag
+                                dragSnapToOrigin
+                            >
+                                <Image src={MessageImage} height={200} width={200} alt="message image" className="max-w-none" draggable={false}/>
+                            </motion.div>
+
+                        </div>
+
+                        <p className="mt-8 text-pretty text-lg font-medium text-gray-300 sm:text-xl/8 relative">
                             Seamlessly manage customer interactions,
                             personalize responses, and boost your business
                             efficiency with our advanced Instagram messaging tool.
@@ -146,6 +199,7 @@ const Home = () => {
                                 Learn more <span aria-hidden="true">→</span>
                             </NavLink>
                         </div>
+
                     </div>
                 </div>
                 <div
@@ -159,6 +213,56 @@ const Home = () => {
                         }}
                         className="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-purple-800 to-indigo-900 opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
                     />
+                </div>
+            </div>
+            <div
+                className="relative bg-gradient-to-br from-purple-800 via-purple-900 to-black py-24 sm:py-32 text-white overflow-hidden">
+                {/* Star Dust Effect */}
+                <div className="absolute inset-0 pointer-events-none">
+                    <div className="animate-star-dust w-full h-full">
+                        {Array.from({length: 100}).map((_, index) => (
+                            <div
+                                key={index}
+                                className="absolute w-1 h-1 bg-purple-500 rounded-full opacity-75"
+                                style={{
+                                    top: `${Math.random() * 100}%`,
+                                    left: `${Math.random() * 100}%`,
+                                    animationDelay: `${Math.random() * 5}s`,
+                                    animationDuration: `${Math.random() * 3 + 2}s`,
+                                }}
+                            ></div>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="mx-auto max-w-7xl px-6 lg:px-8 relative">
+                    <div className="mx-auto max-w-2xl lg:text-center">
+                        <h2 className="text-base font-semibold text-purple-400">Deploy faster</h2>
+                        <p className="mt-2 text-4xl font-semibold tracking-tight sm:text-5xl lg:text-balance">
+                            Everything you need to deploy your app
+                        </p>
+                        <p className="mt-6 text-lg">
+                            Quis tellus eget adipiscing convallis sit sit eget aliquet quis. Suspendisse eget egestas a
+                            elementum
+                            pulvinar et feugiat blandit at. In mi viverra elit nunc.
+                        </p>
+                    </div>
+                    <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
+                        <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
+                            {features.map((feature) => (
+                                <div key={feature.name} className="relative pl-16">
+                                    <dt className="text-base font-semibold">
+                                        <div
+                                            className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-purple-600">
+                                            <feature.icon aria-hidden="true" className="h-6 w-6 text-white"/>
+                                        </div>
+                                        {feature.name}
+                                    </dt>
+                                    <dd className="mt-2 text-base text-purple-300">{feature.description}</dd>
+                                </div>
+                            ))}
+                        </dl>
+                    </div>
                 </div>
             </div>
         </div>

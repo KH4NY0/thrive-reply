@@ -95,16 +95,6 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-          to bottom,
-          transparent,
-          rgb(var(--background-end-rgb))
-  )
-  rgb(var(--background-start-rgb));
-}
-
 .backdrop--blur__safari {
   -webkit-backdrop-filter: blur(5px);
 }
