@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
+import { ClerkProvider } from '@clerk/nextjs'
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "sonner"
+
 
 export const metadata: Metadata = {
   title: "Thrive Replay",
@@ -14,11 +18,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-      >
-        {children}
-      </body>
-    </html>
+      <ClerkProvider>
+          <html lang="en">
+          <body
+              suppressHydrationWarning
+          >
+              <ThemeProvider
+                  attribute="class"
+                  defaultTheme="dark"
+                  disableTransitionOnChange
+              >
+                  {children}
+                  <Toaster />
+              </ThemeProvider>
+          </body>
+      </html>
+</ClerkProvider>
   );
 }
