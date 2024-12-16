@@ -1,8 +1,8 @@
 type Props = {}
 
 const Dashboard = async (props: Props) => {
-    // Server action to onboard the user
-    // 200 || 201
+    //WIP: Server action to onboard the user
+    //WIP: 200 || 201
 
 
     return <div>Dashboard</div>
