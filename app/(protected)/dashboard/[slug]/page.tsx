@@ -2,7 +2,7 @@ type Props = {}
 
 const Page = (props: Props) => {
 
-    return <div>Slug</div>
+    return <div></div>
 }
 
 export default Page
