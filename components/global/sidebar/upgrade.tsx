@@ -8,7 +8,7 @@ const UpgradeCard = (props: Props) => {
             <span className="text-sm">
                 Upgrade to {''}
                 <span className="bg-gradient-to-r
-                    from-[#CC3BD4] font-bold to-[#D064AF]
+                    from-[#9C27B0] font-bold to-[#9C27B0]
                     bg-clip-text text-transparent
                 ">
                     Smart AI

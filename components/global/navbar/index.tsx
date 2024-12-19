@@ -11,6 +11,9 @@ import ClerkAuthState from "@/components/global/clerk-auth-state";
 import {HelpDuoToneWhite} from "@/icons";
 import {SubscriptionPlan} from "@/components/global/subscription-plan";
 import UpgradeCard from "@/components/global/sidebar/upgrade";
+import CreateAutomation from "@/components/global/create-automation";
+import {Notifications} from "@/components/global/navbar/notifications";
+import MainBreadCrumb from "../bread-crumbs/main-bread-crumb";
 
 type Props = {
     slug: string
@@ -66,7 +69,13 @@ const Navbar = ({ slug }: Props) => {
         </div>
                 </Sheet>
             </span>
+            <CreateAutomation />
+            <Notifications />
         </div>
+        <MainBreadCrumb
+            page={page === slug ? 'Home' : page}
+            slug={slug}
+        />
     </div>
 }
 

@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { ClerkProvider } from '@clerk/nextjs'
+import { Plus_Jakarta_Sans } from "next/font/google"
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "sonner"
+import React from "react";
 
+const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: "Thrive Replay",
@@ -21,7 +24,8 @@ export default function RootLayout({
       <ClerkProvider>
           <html lang="en">
           <body
-              suppressHydrationWarning
+              suppressHydrationWarning={true}
+              className={jakarta.className}
           >
               <ThemeProvider
                   attribute="class"

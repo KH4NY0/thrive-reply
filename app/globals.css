@@ -129,7 +129,7 @@
 .radial--gradient {
   background-image: radial-gradient(
           ellipse farthest-side,
-          rgba(51, 82, 204, 0.15) 20%,
+          rgba(128, 0, 255, 0.15) 20%,
           #09090b 100%
   );
   background-size: 100% 100%;
@@ -149,7 +149,7 @@
 .radial--gradient--automations {
   background-image: radial-gradient(
           at top left,
-          rgba(51, 82, 204, 0.05) 40%,
+          rgba(99, 23, 154, 0.05) 40%,
           #1d1d1d 60%
   );
   background-size: 40% 100%;

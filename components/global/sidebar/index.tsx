@@ -1,4 +1,4 @@
-"use client"
+ "use client"
 
 import {usePaths} from "@/hooks/use-nav";
 import LogoSmall from "@/svgs/logo-small";

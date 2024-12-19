@@ -12,6 +12,7 @@ export default async function Layout({ children, params }: Props) {
     // WIP: Query client & fetch data
 
     return (
+
         <div className="p-3">
             {/* Sidebar */}
             <Sidebar slug={params.slug} />
@@ -20,6 +21,7 @@ export default async function Layout({ children, params }: Props) {
                 flex-col overflow-auto
             ">
                 <Navbar slug={params.slug} />
+                {children}
             </div>
         </div>
     );
